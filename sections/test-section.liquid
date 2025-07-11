@@ -1,0 +1,90 @@
+{% comment %}
+File: /sections/custom-heading.liquid
+{% endcomment %}
+
+<div class="custom-heading-section{% if section.settings.full_width %} page-width{% endif %}">
+  <h2 
+    class="custom-heading"
+    style="
+      color: {{ section.settings.text_color }};
+      font-size: {{ section.settings.font_size }}px;
+      text-align: {{ section.settings.text_alignment }};
+    "
+  >
+    {{ section.settings.heading_text }}
+  </h2>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Heading",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Your Custom Heading"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 16,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Heading",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.custom-heading-section {
+  padding: 20px 0;
+}
+
+.custom-heading {
+  margin: 0;
+}
+{% endstylesheet %}

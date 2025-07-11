@@ -328,6 +328,17 @@
         "padding_top": 0,
         "padding_bottom": 36
       }
+    },
+    "test_section_WCTFqU": {
+      "type": "test-section",
+      "name": "Custom Heading",
+      "settings": {
+        "heading_text": "Thank you for visiting!",
+        "text_color": "#ffffff",
+        "font_size": 36,
+        "text_alignment": "center",
+        "full_width": false
+      }
     }
   },
   "order": [
@@ -338,6 +349,7 @@
     "rich_text_tEbMzP",
     "multicolumn_QzYWQM",
     "featured_collection_6frfxg",
-    "featured_blog_br3dte"
+    "featured_blog_br3dte",
+    "test_section_WCTFqU"
   ]
 }
