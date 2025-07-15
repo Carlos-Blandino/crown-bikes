@@ -26,34 +26,37 @@ class CartDrawer extends HTMLElement {
   open(triggeredBy) {
     if (triggeredBy) this.setActiveElement(triggeredBy);
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
-    if (cartDrawerNote && !cartDrawerNote.hasAttribute('role')) this.setSummaryAccessibility(cartDrawerNote);
+    if (cartDrawerNote && !cartDrawerNote.hasAttribute("role"))
+      this.setSummaryAccessibility(cartDrawerNote);
     // here the animation doesn't seem to always get triggered. A timeout seem to help
     setTimeout(() => {
-      this.classList.add('animate', 'active');
+      this.classList.add("animate", "active");
     });
 
     this.addEventListener(
-      'transitionend',
+      "transitionend",
       () => {
-        const containerToTrapFocusOn = this.classList.contains('is-empty')
-          ? this.querySelector('.drawer__inner-empty')
-          : document.getElementById('CartDrawer');
-        const focusElement = this.querySelector('.drawer__inner') || this.querySelector('.drawer__close');
+        const containerToTrapFocusOn = this.classList.contains("is-empty")
+          ? this.querySelector(".drawer__inner-empty")
+          : document.getElementById("CartDrawer");
+        const focusElement =
+          this.querySelector(".drawer__inner") ||
+          this.querySelector(".drawer__close");
         trapFocus(containerToTrapFocusOn, focusElement);
       },
       { once: true }
     );
 
-    document.body.classList.add('overflow-hidden');
-    
+    document.body.classList.add("overflow-hidden");
+
     // *** custom code
-    const drawerHeading = this.querySelector('.drawer__heading');
-    setTimeout(function(){
-      drawerHeading.style.color = 'red';
-    }, 3000);
-    setTimeout(function(){
-      drawerHeading.style.color = 'white';
-    }, 6000);
+    // const drawerHeading = this.querySelector('.drawer__heading');
+    // setTimeout(function(){
+    //   drawerHeading.style.color = 'red';
+    // }, 3000);
+    // setTimeout(function(){
+    //   drawerHeading.style.color = 'white';
+    // }, 6000);
     // *** custom code ends
   }
 
