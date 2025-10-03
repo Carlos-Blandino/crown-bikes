@@ -7,7 +7,6 @@ const productNameField = document.getElementById("productNameField");
 //logic for our custom contact form
 businessCheckbox.addEventListener("click", function (e) {
   if (businessCheckbox.checked == true) {
-    console.log("checked");
     info.classList.remove("hidden");
   } else {
     info.classList.add("hidden");
