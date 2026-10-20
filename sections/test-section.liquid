@@ -9,6 +9,7 @@ File: /sections/custom-heading.liquid
       color: {{ section.settings.text_color }};
       font-size: {{ section.settings.font_size }}px;
       text-align: {{ section.settings.text_alignment }};
+      background-color: {{ section.settings.background_color }}
     "
   >
     {{ section.settings.heading_text }}
@@ -31,6 +32,12 @@ File: /sections/custom-heading.liquid
       "type": "color",
       "id": "text_color",
       "label": "Text Color",
+      "default": "#000000"
+    },
+     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
       "default": "#000000"
     },
     {
