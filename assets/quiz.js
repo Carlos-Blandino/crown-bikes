@@ -5,16 +5,19 @@ const quiz_form = document.getElementById("quizForm");
 let currentIndex = 0;
 const answers = {};
 quiz_form.addEventListener("change", updateAnswers);
+
 function updateAnswers(event) {
   let input = event.target;
-  console.log("input", input);
-
-  // answers[questions[currentIndex].name] = input.innerHTML;
+  answers[input.name] = input.value;
 }
 
 finish_btn.addEventListener("click", function () {
   if (answers.product_type && answers.bike_type && answers.color) {
-    alert("Here are your answers: " + JSON.stringify(answers));
+    alert(
+      "Based on your answers " +
+        JSON.stringify(answers) +
+        " you would be redirected to a recommended product page",
+    );
   } else {
     alert("Please answer all the questions!");
   }
@@ -25,7 +28,6 @@ next_button.addEventListener("click", function () {
   }
   displayQuestion(currentIndex);
   updateButtonStates(currentIndex);
-  console.log("next is", currentIndex);
 });
 prev_button.addEventListener("click", function () {
   if (currentIndex > 0) {
@@ -33,12 +35,11 @@ prev_button.addEventListener("click", function () {
   }
   displayQuestion(currentIndex);
   updateButtonStates(currentIndex);
-  console.log("next is", currentIndex);
 });
 
 function updateButtonStates(index) {
   prev_button.disabled = index === 0;
-  next_button.classList.toggle("hidden", index == questions.length - 1);
+  next_button.classList.toggle("hidden", index === questions.length - 1);
   finish_btn.classList.toggle("hidden", index !== questions.length - 1);
 }
 
@@ -47,8 +48,8 @@ displayQuestion(currentIndex);
 
 function displayQuestion(index) {
   let selectedAnswers = answers[questions[index].name] || "";
-  console.log("answer", selectedAnswers);
-  let question = ` <h1>${selectedAnswers}, </h1>
+  let question = ` 
+  <h1>${selectedAnswers}</h1>
   <h2>${index + 1}) ${questions[index].text}</h2>
     <div class="label-container">
       ${questions[index].options
@@ -56,11 +57,12 @@ function displayQuestion(index) {
           (option) =>
             `
       <input  type="radio"  ${option.value === selectedAnswers && "checked"} 
-     
-      id="${option.value}" 
-      name="${questions[index].name}" 
-      value="${option.value}">
-      <label for="${option.label}">
+        id="${option.value}" 
+        name="${questions[index].name}" 
+        value="${option.value}"
+      >
+    
+      <label for="${option.value}">
         <div class="img-wrap">
           <img src="${option.img}">
         </div>
@@ -70,5 +72,6 @@ function displayQuestion(index) {
         )
         .join("")}
     </div>`;
+
   quizForm.innerHTML = question;
 }
