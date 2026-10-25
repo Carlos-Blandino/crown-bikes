@@ -95,6 +95,7 @@
           </button>
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
+            <div style=" margin-top: 10px">{% render 'payment-icons' %}</div>
           {%- endif -%}
         </div>
       {%- endform -%}
